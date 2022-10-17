@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <label v-bind:title="titulo">Hola mundo</label>
+      <hr />
+      <button v-on:click='mostrarImagen("js.jpg")'>Imagen JS</button>
+      <button v-on:click='mostrarImagen("css.jpg")'>Imagen CSS</button>
+      <hr />
+      <img v-bind:src="imagen" />
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+      // data, methods, props, mounted, created, computed, watch, destroyed
+      const app = {
+        data() {
+          return {
+            titulo: 'Este es un titulo dinamico',
+            imagen: '',
+          };
+        },
+        methods: {
+          mostrarImagen(imagen) {
+            this.imagen = imagen;
+          },
+        },
+      };
+
+      let mountApp = Vue.createApp(app).mount('#app');
+    </script>
+  </body>
+</html>
