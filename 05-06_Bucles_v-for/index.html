@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="(fruta, i) in frutasID" v-bind:key="fruta">
+          Indice: {{i}} - {{fruta.nombre}}
+          <ul>
+            <li v-for="pais in fruta.paises_origen">
+              Pais: {{pais.id}} - {{pais.pais}}
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <ul>
+        <li v-for="numero in 100">{{numero}}</li>
+      </ul>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+      // data, methods, props, mounted, created, computed, watch, destroyed
+      const app = {
+        data() {
+          return {
+            frutasID: [
+              {
+                id: 1,
+                nombre: 'manzana',
+                paises_origen: [
+                  {
+                    id_pais: 1,
+                    pais: 'el salvador',
+                  },
+                ],
+              },
+              {
+                id: 2,
+                nombre: 'pera',
+                paises_origen: [
+                  {
+                    id_pais: 1,
+                    pais: 'guatemala',
+                  },
+                ],
+              },
+              {
+                id: 3,
+                nombre: 'uva',
+                paises_origen: null,
+              },
+            ],
+          };
+        },
+      };
+
+      let mountApp = Vue.createApp(app).mount('#app');
+    </script>
+  </body>
+</html>
